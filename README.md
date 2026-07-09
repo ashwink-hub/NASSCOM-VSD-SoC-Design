@@ -1,10 +1,10 @@
 # NASSCOM-VSD-SoC-Design
 Digital VLSI SoC design and planning workshop with complete RTL2GDSII flow organised by VSD in collaboration with NASSCOM (Advanced Physical Design using OpenLANE/Sky130)
 
-SKY130_D1_SK2 - SoC design and
+## SKY130_D1_SK2 - SoC design and
 OpenLANE
 
-SKY_L2 - Simplified RTL2GDS flow :
+### SKY_L2 - Simplified RTL2GDS flow :
 
 <!-- image -->
 
@@ -59,7 +59,7 @@ Once routing is finished, we construct the final layout
 The final layout should undergo the above verification process
 Atlast, timing analysis is done to check the layout running according to the specific timing
 
-SKY_L3 - Introduction to OpenLANE
+### SKY_L3 - Introduction to OpenLANE
 and strive chipsets
 
 <!-- image -->
@@ -82,7 +82,7 @@ Autonomous and Interative
 
 It comes with 43 best design examples and so on
 
-SKY_L4 - Introduction to OpenLane
+### SKY_L4 - Introduction to OpenLane
 detailed ASIC design flow
 
 The below diagram shows the openLane flow
