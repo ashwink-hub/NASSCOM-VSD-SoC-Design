@@ -11,10 +11,11 @@ For the digital ASIC Design, there are three important things required
 2. EDA Tools
 3. PDK Data
 
-
+<img width="1281" height="721" alt="image" src="https://github.com/user-attachments/assets/2a4e5348-68b3-42f7-8d64-bccd81f89c35" />
 
 What is mean by PDK ?
-      The PDK also called as the process development kit, that contains the collection of files used to model a fabrication process for the EDA tools to design an IC (Integrated Chip). It act as an interface between the FAB and the designers.
+      The PDK also called as the process development kit, that contains the collection of files used to model a fabrication process for the EDA tools to design an IC (Integrated Chip). It act as an interface between the FAB and the designers. 
+      SKY130nm is a open-source pdk, available at github.com/google/skywater-pdk
 ### SKY_L2 - Simplified RTL2GDS flow :
 
 <img width="781" height="416" alt="image" src="https://github.com/user-attachments/assets/77f34c2f-71ff-46a0-aa58-e9399a463485" />
