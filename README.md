@@ -1,3 +1,4 @@
+![Uploading Screenshot from 2026-07-09 20-14-16.png…]()
 # NASSCOM-VSD-SoC-Design
 Digital VLSI SoC design and planning workshop with complete RTL2GDSII flow organised by VSD in collaboration with NASSCOM (Advanced Physical Design using OpenLANE/Sky130)
 
@@ -272,6 +273,7 @@ This document walks through the basic commands used to invoke OpenLANE and run s
 ```bash
 cd Desktop/work/tools/openlane_working_dir/openlane
 ```
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-14-16" src="https://github.com/user-attachments/assets/4c064432-72bf-4264-b72d-c0631f8cc41b" />
 
 
 Move into the folder where OpenLANE is installed and set up.
@@ -285,19 +287,24 @@ docker
 
 OpenLANE runs inside a Docker container so that all its tools and dependencies work the same way on any machine. To avoid typing that long `docker run` command every time, it's usually saved as an alias called `docker`. Once the alias is set, simply typing `docker` drops you into the OpenLANE container, with your current folder mounted inside it so files can be shared between your machine and the container.
 
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-25-37" src="https://github.com/user-attachments/assets/d614fb9d-d803-450a-a555-247a8bc7dd34" />
+
 ## Step 3: Launch OpenLANE in Interactive Mode
 
-```bash
-./flow.tcl -interactive
+```bash./flow.tcl -interactive
 ```
 
 This starts the OpenLANE flow, but instead of running everything automatically end-to-end, it opens an interactive shell where you can run each stage of the flow step by step. This is helpful for learning the flow or debugging a specific stage.
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-26-51" src="https://github.com/user-attachments/assets/0927e997-29b6-4f91-9c1e-27108417957a" />
+
 
 ## Step 4: Load the OpenLANE Package
 
 ```bash
 package require openlane 0.9
 ```
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-28-10" src="https://github.com/user-attachments/assets/908cc0f9-b2c6-47b7-8486-03f7cbb25e0f" />
 
 This loads the OpenLANE Tcl package (version 0.9) so all the flow commands become available for use.
 
@@ -309,11 +316,17 @@ prep -design picorv32a
 
 Before running any stage of the flow, the design needs to be "prepped." This command sets up the required directories, merges the PDK and design-specific configuration files, and creates a fresh run folder to store all the outputs for this particular run. Here, we're prepping the `picorv32a` design.
 
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-29-26" src="https://github.com/user-attachments/assets/a439a1f4-4ec3-4b87-a43a-2304b2a99452" />
+
+
 ## Step 6: Run Synthesis
 
 ```bash
 run_synthesis
 ```
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-31-42" src="https://github.com/user-attachments/assets/300ced02-a205-4f90-93aa-dbdfdbf4fe33" />
+
 
 This runs the RTL synthesis stage, converting the design's RTL (written in Verilog) into a gate-level netlist made up of standard cells from the PDK library.
 
@@ -322,6 +335,8 @@ This runs the RTL synthesis stage, converting the design's RTL (written in Veril
 ```bash
 exit
 ```
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-32-30" src="https://github.com/user-attachments/assets/134bea7f-ead0-4816-b66c-a5029f39b89d" />
+
 
 Closes the interactive OpenLANE flow session.
 
@@ -330,6 +345,8 @@ Closes the interactive OpenLANE flow session.
 ```bash
 exit
 ```
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-32-58" src="https://github.com/user-attachments/assets/cdb767f5-284d-4ab4-af75-1df2882ca0a9" />
+
 
 Closes the Docker container and returns you to your regular terminal.
 
