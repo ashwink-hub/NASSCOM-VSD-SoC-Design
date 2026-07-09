@@ -2,6 +2,29 @@
 # NASSCOM-VSD-SoC-Design
 Digital VLSI SoC design and planning workshop with complete RTL2GDSII flow organised by VSD in collaboration with NASSCOM (Advanced Physical Design using OpenLANE/Sky130)
 
+## SKY130_D1_SK1 - How to talk to computers
+
+### SKY_L1 - Introduction to QFN-48 Package, chip, pads, core, die and IPs
+
+#### Package
+
+What we call "the chip" on a board is actually just the **package** a protective cover around the real chip. The real chip sits inside, tiny and fragile, connected to the package pins by thin wires (**wire bonding**).
+
+#### Chip
+
+Inside the real chip:
+
+- **Pads** — where signals enter and exit the chip.
+- **Core** — the area inside the pads, holding all the digital logic.
+- **Die** — pads + core together. This is the basic unit of a manufactured chip.
+
+### Foundry
+
+A **foundry** is the factory where chips are manufactured.
+
+- **Foundry IP** — specialized blocks tied to a specific foundry, needing expert design.
+- **Macros** — reusable, repeatable digital logic blocks.
+
 ## SKY130_D1_SK2 - SoC design and OpenLANE
 
 ### SKY_L1 - Introduction to all components of open-source digital asic design
