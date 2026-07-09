@@ -1,8 +1,7 @@
 # NASSCOM-VSD-SoC-Design
 Digital VLSI SoC design and planning workshop with complete RTL2GDSII flow organised by VSD in collaboration with NASSCOM (Advanced Physical Design using OpenLANE/Sky130)
 
-## SKY130_D1_SK2 - SoC design and
-OpenLANE
+## SKY130_D1_SK2 - SoC design and OpenLANE
 
 ### SKY_L2 - Simplified RTL2GDS flow :
 
