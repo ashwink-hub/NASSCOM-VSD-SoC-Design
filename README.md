@@ -32,6 +32,21 @@ A **foundry** is the factory where chips are manufactured.
 - **Foundry IP** — specialized blocks tied to a specific foundry, needing expert design.
 - **Macros** — reusable, repeatable digital logic blocks.
 
+  
+### SKY_L2 - Introduction to RISC-V
+
+#### From C Program to Chip
+
+<img width="1245" height="796" alt="image" src="https://github.com/user-attachments/assets/1fc15c14-c856-481d-9191-5f8b4cd9f572" />
+
+
+A C program has to eventually run on real hardware — the chip inside your laptop. Getting there follows a set flow.
+
+1. **Compile to Assembly** — The C program is compiled into an assembly language program, based on the **RISC-V ISA** (Reduced Instruction Set Computing - V Instruction Set Architecture).
+2. **Assemble to Machine Code** — The assembly program is converted into machine language — plain binary (0s and 1s) that the hardware can understand.
+3. **Implement in RTL** — The RISC-V specification is implemented using RTL (a Hardware Description Language).
+4. **RTL to Layout** — The RTL is taken through the standard **RTL to GDSII** flow (PnR) to produce the final chip layout.
+
 ## SKY130_D1_SK2 - SoC design and OpenLANE
 
 ### SKY_L1 - Introduction to all components of open-source digital asic design
