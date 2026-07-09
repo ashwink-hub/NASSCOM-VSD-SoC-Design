@@ -156,3 +156,29 @@ And the physical verification of DRC and LVS is checked using the Magic Tool
 
 <img width="1122" height="638" alt="image" src="https://github.com/user-attachments/assets/0381e3f0-4825-4618-a7ca-ea3ece42e139" />
 
+## SKY130_D1_SK3 - Get familiar to open-source EDA tools
+
+### SKY_L1 - OpenLANE Directory structure in detail
+  This module explains the OpenLane tool, the directory , the command, the environment of the OpenLane
+  How to invoke and run the tool
+  key linux command such as : 
+      ls - listing
+      ls -ltr - list everything in the chronological order
+      cd - change Directory
+      less  - open
+      clear - to clear the terminal
+  to know about the command
+      command_name --help
+
+  Directory of OpenLane : 
+
+
+  libs.ref => itcontains the files specific to the pdk
+  libs.tech => it contains the file specific to the technology (i.e) ngspice, openLane, magic
+
+  PDK(Proces):
+      the folder has the all information of the pdk, we are using a sky130nm pdk, which is opensource
+      openlane is built around the pdk
+
+      
+      
