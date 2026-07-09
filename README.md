@@ -6,25 +6,30 @@ OpenLANE
 
 ### SKY_L2 - Simplified RTL2GDS flow :
 
-<!-- image -->
+<img width="781" height="416" alt="image" src="https://github.com/user-attachments/assets/77f34c2f-71ff-46a0-aa58-e9399a463485" />
+
 
 The above image is the simplified RTL Design flow
 The major step is the synthesis
 It converts the RTL code into a standard cell library
 
-<!-- image -->
+<img width="1121" height="617" alt="image" src="https://github.com/user-attachments/assets/93e342e4-80fb-4056-a5b1-0c25879f6494" />
+
 
 In the floor planning,
 
-<!-- image -->
+<img width="1125" height="617" alt="image" src="https://github.com/user-attachments/assets/31dab87e-9e35-41c1-b997-16aa67d3c00a" />
+
 
 In chip floor planning the chip die is partitoned between different components
 
-<!-- image -->
+<img width="1118" height="627" alt="image" src="https://github.com/user-attachments/assets/52a55484-bbf6-4789-b49e-1e990066a91c" />
+
 
 In this step, macro rows and routing steps were defined, which will be used later during pnr
 
-<!-- image -->
+<img width="1117" height="616" alt="image" src="https://github.com/user-attachments/assets/12baa072-4a75-4e96-bb87-216e4cdde3b0" />
+
 
 In power planning, The power network is constructed, typically the chip is powered by vdd and
 gnd pins
@@ -32,7 +37,8 @@ The power pins are the connected to all components, such parallel instructions a
 reduce the resistance
 And to address the electro migration problem
 
-<!-- image -->
+<img width="1122" height="626" alt="image" src="https://github.com/user-attachments/assets/ee56bb55-7227-49dc-9850-840655f9faf4" />
+
 
 Typically cell placement is done using two steps :
 Global and Detailed Placement
@@ -40,21 +46,25 @@ Global placement finds the optimum position for all cells, it may not be legal, 
 overlap
 In details placement, the positions obtained from the global placement is altered to be legal
 
-<!-- image -->
+<img width="1116" height="622" alt="image" src="https://github.com/user-attachments/assets/89e43ec7-8936-470e-b0eb-81dbf96d946f" />
+
 
 After placement, comes routing, before routing we should create the clock distribution network
 
-<!-- image -->
+<img width="1120" height="622" alt="image" src="https://github.com/user-attachments/assets/5dfa6ad2-a6f7-448e-b550-f330ba52a5d0" />
+
 
 After this, comes the signal routing using horizontal and vertical nets
 THE SKY130 PDK CONTAINS THE SIX ROUTING LAYERS
 
-<!-- image -->
+<img width="1117" height="616" alt="image" src="https://github.com/user-attachments/assets/28af4469-87d4-4588-ab98-eb0727cab702" />
+
 
 mostly routing grids are used as global and detailed routing,
 Once routing is finished, we construct the final layout
 
-<!-- image -->
+<img width="1122" height="610" alt="image" src="https://github.com/user-attachments/assets/d06186e5-7c66-4b93-9211-f22afe7c5278" />
+
 
 The final layout should undergo the above verification process
 Atlast, timing analysis is done to check the layout running according to the specific timing
@@ -62,23 +72,27 @@ Atlast, timing analysis is done to check the layout running according to the spe
 ### SKY_L3 - Introduction to OpenLANE
 and strive chipsets
 
-<!-- image -->
+<img width="1122" height="622" alt="image" src="https://github.com/user-attachments/assets/4dea9a4c-8dff-4c2a-a5a7-6a6e07ab39cf" />
+
 
 It is opensource and free
 
-<!-- image -->
+<img width="1121" height="617" alt="image" src="https://github.com/user-attachments/assets/43f88297-51d8-4ac7-95ac-a861430a94eb" />
 
 The below is the strive Soc family
 
-<!-- image -->
+<img width="1121" height="631" alt="image" src="https://github.com/user-attachments/assets/0baf3873-7180-4dab-8909-128c95fb4762" />
 
-<!-- image -->
+
+<img width="1123" height="512" alt="image" src="https://github.com/user-attachments/assets/5bb293ff-fb10-4bbe-a0ed-f28293c369c8" />
+
 
 OpenLane can be used to generate macros and chips like the final layout
 It has the two modes of operation :
 Autonomous and Interative
 
-<!-- image -->
+<img width="1123" height="623" alt="image" src="https://github.com/user-attachments/assets/b51b1164-764a-47c3-97b3-293e78a84602" />
+
 
 It comes with 43 best design examples and so on
 
@@ -87,24 +101,29 @@ detailed ASIC design flow
 
 The below diagram shows the openLane flow
 
-<!-- image -->
+<img width="1120" height="625" alt="image" src="https://github.com/user-attachments/assets/00d89511-5cb6-46ed-802a-dacfb62f2cb7" />
+
 
 OpenLane is based on several opensource projects
 
-<!-- image -->
+<img width="1122" height="628" alt="image" src="https://github.com/user-attachments/assets/254df92a-4d1c-4f18-9346-5253d221bcf5" />
+
 
 It has the several process for the testing the design ,
 
-<!-- image -->
+<img width="1126" height="632" alt="image" src="https://github.com/user-attachments/assets/c48dc075-7d3d-4fe1-a699-2422136931b3" />
+
 
 After testing comes the physical Implementation, which is completely run by OpenRoad
 
-<!-- image -->
+<img width="1126" height="625" alt="image" src="https://github.com/user-attachments/assets/2b56409d-c16c-4ccd-b02f-4a40b3b67c2f" />
+
 
 The above process are done in the openRoad
 The input to this process is the gate level netlist which is prepared after the synthesis
 
-<!-- image -->
+<img width="1120" height="612" alt="image" src="https://github.com/user-attachments/assets/12ff8118-fa22-4a20-a3c1-430a70868f12" />
+
 
 After the netlist is prepared the logic verification test should be carried out
 The main reason for the LEC test is to confirm that the function did not change after modifying
@@ -112,23 +131,28 @@ the netlist
 
 Dealing with the Antenna Rule Violation
 
-<!-- image -->
+<img width="1117" height="623" alt="image" src="https://github.com/user-attachments/assets/0eb7e81c-bd01-4f28-a9fe-1d8860350100" />
+
 
 It damages the transistor gates during fabrication
 There is two solution with deal with this problem
 1. Bridging
 
-<!-- image -->
+<img width="1122" height="623" alt="image" src="https://github.com/user-attachments/assets/9090f68a-e0f5-4b2f-ae01-fc7cb76d7571" />
+
 
 2. Adding antena diode
 
-<!-- image -->
+<img width="1121" height="626" alt="image" src="https://github.com/user-attachments/assets/c0209817-0dbe-4ab4-b1a2-35e12eb963c0" />
+
 
 In openLance, we take the preventive approach
 
-<!-- image -->
+<img width="1118" height="652" alt="image" src="https://github.com/user-attachments/assets/091b45db-31a9-443d-8455-ecc4b06aa171" />
+
 
 The open sta from the openroad is used to check the timing violation(Static Timing Analysis)
 And the physical verification of DRC and LVS is checked using the Magic Tool
 
-<!-- image -->
+<img width="1122" height="638" alt="image" src="https://github.com/user-attachments/assets/0381e3f0-4825-4618-a7ca-ea3ece42e139" />
+
