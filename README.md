@@ -1,9 +1,20 @@
-![Uploading Screenshot from 2026-07-09 20-14-16.png…]()
+
 # NASSCOM-VSD-SoC-Design
 Digital VLSI SoC design and planning workshop with complete RTL2GDSII flow organised by VSD in collaboration with NASSCOM (Advanced Physical Design using OpenLANE/Sky130)
 
 ## SKY130_D1_SK2 - SoC design and OpenLANE
 
+### SKY_L1 - Introduction to all components of open-source digital asic design
+
+For the digital ASIC Design, there are three important things required
+1. RTL IP's
+2. EDA Tools
+3. PDK Data
+
+
+
+What is mean by PDK ?
+      The PDK also called as the process development kit, that contains the collection of files used to model a fabrication process for the EDA tools to design an IC (Integrated Chip). It act as an interface between the FAB and the designers.
 ### SKY_L2 - Simplified RTL2GDS flow :
 
 <img width="781" height="416" alt="image" src="https://github.com/user-attachments/assets/77f34c2f-71ff-46a0-aa58-e9399a463485" />
