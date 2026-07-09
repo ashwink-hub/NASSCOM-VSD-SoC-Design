@@ -6,11 +6,17 @@ Digital VLSI SoC design and planning workshop with complete RTL2GDSII flow organ
 
 ### SKY_L1 - Introduction to QFN-48 Package, chip, pads, core, die and IPs
 
+<img width="887" height="852" alt="image" src="https://github.com/user-attachments/assets/8dd4444c-64b2-42ad-ad74-2e116b80ffbd" />
+
 #### Package
 
 What we call "the chip" on a board is actually just the **package** a protective cover around the real chip. The real chip sits inside, tiny and fragile, connected to the package pins by thin wires (**wire bonding**).
 
 #### Chip
+<img width="1296" height="857" alt="image" src="https://github.com/user-attachments/assets/c8219650-b99e-4de5-a74b-c056a7502146" />
+
+<img width="1248" height="855" alt="image" src="https://github.com/user-attachments/assets/c5743e31-123d-424a-8fdc-893c3b2f5c61" />
+
 
 Inside the real chip:
 
@@ -21,6 +27,7 @@ Inside the real chip:
 ### Foundry
 
 A **foundry** is the factory where chips are manufactured.
+<img width="1067" height="596" alt="image" src="https://github.com/user-attachments/assets/b1463dd7-1861-4000-8a86-22f33d4e1ae6" />
 
 - **Foundry IP** — specialized blocks tied to a specific foundry, needing expert design.
 - **Macros** — reusable, repeatable digital logic blocks.
