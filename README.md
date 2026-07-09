@@ -155,93 +155,115 @@ And the physical verification of DRC and LVS is checked using the Magic Tool
 
 <img width="1122" height="638" alt="image" src="https://github.com/user-attachments/assets/0381e3f0-4825-4618-a7ca-ea3ece42e139" />
 
-## SKY130_D1_SK3 - Get familiar to open-source EDA tools
+# SKY130_D1_SK3 - Getting Familiar with Open-Source EDA Tools
 
-### SKY_L1 - OpenLANE Directory structure in detail
-  This module explains the OpenLane tool, the directory , the command, the environment of the OpenLane
-  How to invoke and run the tool
-  key linux command such as : 
-      ls - listing
-      ls -ltr - list everything in the chronological order
-      cd - change Directory
-      less  - open
-      clear - to clear the terminal
-  to know about the command
-      command_name --help
+## SKY_L1 - OpenLANE Directory Structure in Detail
 
-  Directory of OpenLane : 
+This module covers the OpenLANE tool itself — its directory structure, commands, and environment — along with how to invoke and run it.
 
-  cd /Desktop/work/tools/openlane_working_dir
+### Useful Linux Commands
 
+| Command | Description |
+|---|---|
+| `ls` | List files in a directory |
+| `ls -ltr` | List files in chronological order (oldest to newest) |
+| `cd` | Change directory |
+| `less` | Open and view a file |
+| `clear` | Clear the terminal screen |
 
-  OpenLane Directory(  ) : 
-   
+To learn more about any command, you can run:
 
+```bash
+command_name --help
+```
 
-  libs.ref => itcontains the files specific to the pdk
-  libs.tech => it contains the file specific to the technology (i.e) ngspice, openLane, magic
+### Navigating to the OpenLANE Directory
 
-  PDK(Proces Development Kit):
-      the folder has the all information of the pdk, we are using a sky130nm pdk, which is opensource
-      openlane is built around the pdk
+```bash
+cd /Desktop/work/tools/openlane_working_dir
+```
 
-### SKY_L2 - Design Preparation Step
-we have to run in the interactive mode, or else it will process everything automatically
-then, import the packages
+### OpenLANE Directory Overview
 
+- **`libs.ref`** — Contains files specific to the PDK (Process Design Kit).
+- **`libs.tech`** — Contains files specific to individual tools/technologies, such as ngspice, OpenLANE, and Magic.
 
+### PDK (Process Development Kit)
 
-all the designs are from the design folder from the openlane, 
-src file for source contains verilog, sdc information
-config.tcl bypasses any configuration that is already default, override the settings 
-sky130Axx file contains default value from the OpenLane. it won't affect the flow if we have not this file
+This folder holds all the information related to the PDK. We're using the **SKY130nm PDK**, which is open-source. OpenLANE itself is built around this PDK — it's the foundation the entire flow relies on.
 
+---
 
+## SKY_L2 - Design Preparation Step
 
-before synthesis we have to setup file system , 
-design setup stage
-command prep -design picorv32a
+OpenLANE should be run in **interactive mode**; otherwise, it processes everything automatically without letting you inspect each stage.
 
-### SKY_L3 - Review files after design prep and run synthesis
+### Steps
 
-before running, a new file is created on our design file
-from the runs folder
-today date will be created
-      
-tmp will be empty
-result folder will have the result of the synthesis and etc
-reports folder have the rpts of every step
-config.tcl have the default parameters
-commands file have the commands we use
-this is the file created on the merge LIF 
+1. **Import the required packages** to load OpenLANE's commands.
+2. All designs live in the `designs` folder inside OpenLANE.
+   - The **`src`** folder contains the source files — Verilog and SDC (timing constraints) information.
+   - **`config.tcl`** overrides any default configuration — anything set here takes priority over OpenLANE's defaults.
+   - The **`sky130A.xx`** file holds default values provided by OpenLANE. Removing it won't break the flow since these are just fallback defaults.
+3. Before running synthesis, the file system needs to be set up — this is the **design setup stage**.
 
+### Command to Prep the Design
 
-then we have to run_synthesis
+```bash
+prep -design picorv32a
+```
 
+---
 
-### SKY_L4 - OpenLANE Project Git Link Description
+## SKY_L3 - Reviewing Files After Design Prep and Running Synthesis
 
-recommend yt videos to know more about the openlane : 
-  fossi dialup
-    an intro to openlane skywater pdk
-github repo : 
-  efabless/openlane
-  all the information about the OpenLane
+Before running synthesis, the `prep` step creates a new set of files and folders for our design.
 
+### Inside the `runs` Folder
 
-### SKY_L5 - Steps to characterize synthesis results
+A new run folder is created, named with **today's date**.
 
-The first objective is to calculate the flop ratio
-which is the D flip flop of the cell
-The formula is , 
-Total Dff cell / Number of cells * 100
-it is the flop ratio
+- **`tmp`** — Empty at this stage; used for temporary files during the run.
+- **`results`** — Will hold the results of synthesis and later stages.
+- **`reports`** — Contains reports generated at every step of the flow.
+- **`config.tcl`** — Stores the default parameters used for this run.
+- **`commands`** file — Logs the commands that were used during the run.
 
-The files will be added on the synthesis and the report folders
+A merged LEF file is also created at this stage.
 
-Lab Implemention : 
+### Run Synthesis
 
-# Running the OpenLANE Flow (Interactive Mode)
+```bash
+run_synthesis
+```
+
+---
+
+## SKY_L4 - OpenLANE Project Git Link & Description
+
+### Recommended YouTube Videos
+
+- **FOSSi Dial-up** — "An Intro to OpenLANE and the SkyWater PDK"
+
+### GitHub Repository
+
+- [`efabless/openlane`](https://github.com/efabless/openlane) — Contains all the official information, documentation, and source code for OpenLANE.
+
+---
+
+## SKY_L5 - Steps to Characterize Synthesis Results
+
+The first objective after synthesis is to calculate the **flop ratio** — the proportion of D flip-flops among all the cells used.
+
+### Flop Ratio Formula
+
+```
+Flop Ratio = (Total number of D Flip-Flop cells / Total number of cells) × 100
+```
+
+The relevant files for this calculation can be found in the **synthesis** and **reports** folders.
+
+# Lab Implementation - Running the OpenLANE Flow (Interactive Mode)
 
 This document walks through the basic commands used to invoke OpenLANE and run synthesis on a design (`picorv32a`) inside its Docker environment.
 
@@ -310,5 +332,4 @@ exit
 
 Closes the Docker container and returns you to your regular terminal.
 
-    The task is to find the flop ratio from the synthesis statistics report file
     
