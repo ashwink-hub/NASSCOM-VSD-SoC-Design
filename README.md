@@ -172,13 +172,144 @@ And the physical verification of DRC and LVS is checked using the Magic Tool
 
   Directory of OpenLane : 
 
+  cd /Desktop/work/tools/openlane_working_dir
+
+
+  OpenLane Directory(  ) : 
+   
+
 
   libs.ref => itcontains the files specific to the pdk
   libs.tech => it contains the file specific to the technology (i.e) ngspice, openLane, magic
 
-  PDK(Proces):
+  PDK(Proces Development Kit):
       the folder has the all information of the pdk, we are using a sky130nm pdk, which is opensource
       openlane is built around the pdk
 
+### SKY_L2 - Design Preparation Step
+we have to run in the interactive mode, or else it will process everything automatically
+then, import the packages
+
+
+
+all the designs are from the design folder from the openlane, 
+src file for source contains verilog, sdc information
+config.tcl bypasses any configuration that is already default, override the settings 
+sky130Axx file contains default value from the OpenLane. it won't affect the flow if we have not this file
+
+
+
+before synthesis we have to setup file system , 
+design setup stage
+command prep -design picorv32a
+
+### SKY_L3 - Review files after design prep and run synthesis
+
+before running, a new file is created on our design file
+from the runs folder
+today date will be created
       
-      
+tmp will be empty
+result folder will have the result of the synthesis and etc
+reports folder have the rpts of every step
+config.tcl have the default parameters
+commands file have the commands we use
+this is the file created on the merge LIF 
+
+
+then we have to run_synthesis
+
+
+### SKY_L4 - OpenLANE Project Git Link Description
+
+recommend yt videos to know more about the openlane : 
+  fossi dialup
+    an intro to openlane skywater pdk
+github repo : 
+  efabless/openlane
+  all the information about the OpenLane
+
+
+### SKY_L5 - Steps to characterize synthesis results
+
+The first objective is to calculate the flop ratio
+which is the D flip flop of the cell
+The formula is , 
+Total Dff cell / Number of cells * 100
+it is the flop ratio
+
+The files will be added on the synthesis and the report folders
+
+Lab Implemention : 
+
+# Running the OpenLANE Flow (Interactive Mode)
+
+This document walks through the basic commands used to invoke OpenLANE and run synthesis on a design (`picorv32a`) inside its Docker environment.
+
+## Step 1: Navigate to the OpenLANE Directory
+
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
+```
+
+Move into the folder where OpenLANE is installed and set up.
+
+## Step 2: Enter the OpenLANE Docker Container
+
+```bash
+# alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+docker
+```
+
+OpenLANE runs inside a Docker container so that all its tools and dependencies work the same way on any machine. To avoid typing that long `docker run` command every time, it's usually saved as an alias called `docker`. Once the alias is set, simply typing `docker` drops you into the OpenLANE container, with your current folder mounted inside it so files can be shared between your machine and the container.
+
+## Step 3: Launch OpenLANE in Interactive Mode
+
+```bash
+./flow.tcl -interactive
+```
+
+This starts the OpenLANE flow, but instead of running everything automatically end-to-end, it opens an interactive shell where you can run each stage of the flow step by step. This is helpful for learning the flow or debugging a specific stage.
+
+## Step 4: Load the OpenLANE Package
+
+```bash
+package require openlane 0.9
+```
+
+This loads the OpenLANE Tcl package (version 0.9) so all the flow commands become available for use.
+
+## Step 5: Prep the Design
+
+```bash
+prep -design picorv32a
+```
+
+Before running any stage of the flow, the design needs to be "prepped." This command sets up the required directories, merges the PDK and design-specific configuration files, and creates a fresh run folder to store all the outputs for this particular run. Here, we're prepping the `picorv32a` design.
+
+## Step 6: Run Synthesis
+
+```bash
+run_synthesis
+```
+
+This runs the RTL synthesis stage, converting the design's RTL (written in Verilog) into a gate-level netlist made up of standard cells from the PDK library.
+
+## Step 7: Exit OpenLANE
+
+```bash
+exit
+```
+
+Closes the interactive OpenLANE flow session.
+
+## Step 8: Exit the Docker Container
+
+```bash
+exit
+```
+
+Closes the Docker container and returns you to your regular terminal.
+
+    The task is to find the flop ratio from the synthesis statistics report file
+    
