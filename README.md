@@ -350,4 +350,18 @@ exit
 
 Closes the Docker container and returns you to your regular terminal.
 
-    
+## step 9: To find the flop ratio
+
+Scroll up and find in the print statistics
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-38-17" src="https://github.com/user-attachments/assets/1109eef5-6cc3-42ee-afbf-147b12f0260c" />
+
+The Total number of the cell is 
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-40-13" src="https://github.com/user-attachments/assets/b37707d0-d8b2-41a5-9f22-d6811bba418a" />
+
+The final value of the flop ratio is 
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-42-16" src="https://github.com/user-attachments/assets/114ce1df-393f-4d6d-8f9d-40d6b06ea015" />
+
+
