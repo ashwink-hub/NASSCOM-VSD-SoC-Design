@@ -1,6 +1,7 @@
 
 # NASSCOM-VSD-SoC-Design
 Digital VLSI SoC design and planning workshop with complete RTL2GDSII flow organised by VSD in collaboration with NASSCOM (Advanced Physical Design using OpenLANE/Sky130)
+# Sky130 Day 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK
 
 ## SKY130_D1_SK1 - How to talk to computers
 
@@ -422,3 +423,134 @@ The final value of the flop ratio is
 <img width="1920" height="1080" alt="Screenshot from 2026-07-09 20-42-16" src="https://github.com/user-attachments/assets/114ce1df-393f-4d6d-8f9d-40d6b06ea015" />
 
 
+# Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
+
+# SKY130_D2_SK1 - Chip Floor Planning Considerations
+
+## SKY_L1 - Utilization Factor and Aspect Ratio
+
+In the physical design overview, the first step is to define the **width** and **height** of the **Core** and **Die**.
+
+A **netlist** defines the connectivity of all components in the design.
+
+<img width="757" height="512" alt="image" src="https://github.com/user-attachments/assets/72230109-f6e1-4c29-8267-7398c3acda43" />
+
+
+The image above shows the basic structure: the **Die** is the outer boundary, and the **Core** sits inside it — the core is where the horizontal rows (placement rows) for standard cells are laid out.
+
+---
+
+## Understanding the Netlist
+
+Let's consider a simple example netlist:
+
+- **FF** = Flip-Flops / Latches / Registers
+- **A1, O1** = Standard Cells (AND gate, OR/Inverter gate)
+
+The example netlist consists of **2 flip-flops and 2 gates**, connected as follows:
+
+> **Note:** A "netlist" describes the connectivity of an electronic design.
+
+<img width="830" height="615" alt="image" src="https://github.com/user-attachments/assets/e5879cf2-ee79-458f-bec1-c6a358f7d7a1" />
+
+---
+
+## Defining Core and Die Dimensions
+
+While defining the dimensions of the chip, we are mostly defining the dimensions of the **logic gates** used. To find the dimensions of the core and die, we consider the **standard cells** that make up the logic gates.
+
+By convention in this example:
+- Each **standard cell** = 1 unit × 1 unit → **1 sq. unit** of area
+- Each **flip-flop (FF)** = 1 unit × 1 unit → **1 sq. unit** of area
+
+Roughly, the entire circuit (2 FFs + 2 standard cells) occupies **4 sq. units** of area.
+
+<img width="617" height="515" alt="image" src="https://github.com/user-attachments/assets/bb989789-777a-40a6-b07f-c113668afee9" />
+
+
+Inside the **Die**, the **Core** is placed. The **Core** is where we place the fundamental and actual logic of the design.
+
+---
+
+## What is "Core" and "Die"?
+
+A **die** (which contains the core) is a small semiconductor material specimen on which the fundamental circuit is fabricated.
+
+
+
+The **logical cells occupy the complete area of the core** in this idealized example, giving **100% utilization**.
+
+<img width="1001" height="553" alt="image" src="https://github.com/user-attachments/assets/e8c33a08-cfa2-4535-9651-fe32b4601bbc" />
+
+
+If there were some area left unused inside the core, utilization would be less than 100%. In this idealized example, no area is left out, so utilization is exactly 100%.
+
+---
+
+## Utilization Factor
+
+The **Utilization Factor** is defined as:
+
+```
+                Area occupied by the logic cells (Netlist)
+Utilization  =  --------------------------------------------
+Factor                    Total area of the Core
+```
+
+<img width="700" height="503" alt="image" src="https://github.com/user-attachments/assets/42f49cbf-3295-44b6-b224-9d1a6c895dea" />
+
+
+
+
+For the example above:
+
+```
+                (4 x 1 sq. unit)
+Utilization  =  -----------------  =  1
+Factor          (2 unit x 2 unit)
+```
+
+- When **Utilization Factor = 1**, the core is **completely optimized** (100% utilized).
+- **Practically, designs do not target 100% utilization.** A typical target is around **60–80% utilization**, leaving room for routing, buffering, and optimization.
+
+---
+
+## Aspect Ratio
+
+The **Aspect Ratio** is defined as:
+
+```
+Aspect Ratio = Height / Width
+```
+
+- If **Aspect Ratio = 1** → the chip is **square** shaped.
+- If **Aspect Ratio ≠ 1** → the chip is **rectangular** shaped.
+
+<img width="646" height="497" alt="image" src="https://github.com/user-attachments/assets/aa8e3945-71ac-4177-b638-0f7ae25d240e" />
+
+
+---
+
+## Example: Larger Die and Core Area
+
+Now consider a bigger example where the **Die** is **4 units × 4 units**, but the actual logic (the same 2 FFs + A1 + O1 netlist) still only occupies a **2 unit × 2 unit** area.
+
+<img width="982" height="552" alt="image" src="https://github.com/user-attachments/assets/d85f4581-8d83-46ff-b541-37fddcdecc95" />
+
+
+Calculating the Utilization Factor for this case:
+
+```
+                (2 unit x 2 unit)
+Utilization  =  -----------------  =  0.25
+Factor          (4 unit x 4 unit)
+```
+
+<img width="938" height="552" alt="image" src="https://github.com/user-attachments/assets/47b9149d-976a-4435-ba4a-bec624279d83" />
+
+
+**Interpretation:** Out of the complete chip area, only **25% is utilized**, and the remaining **75% is available** for placement optimization, buffering, routing resources, and other physical design needs.
+
+<img width="932" height="551" alt="image" src="https://github.com/user-attachments/assets/46b58524-97e4-4c53-bc39-e31be90d9099" />
+
+---
