@@ -639,3 +639,109 @@ General convention:
 To protect the pin locations, a **placement blockage** is defined — this prevents the automated Placement-and-Routing tool from placing any other cells too close to the pins.
 
 Once this blockage is set, the floorplan is considered ready for the placement and routing stage.
+# Placement, Routing & Standard Cell Characterization
+
+## Placement and Routing Stage in the Physical Design Flow
+
+### 1. Bind Netlist with Physical Cells
+
+Every gate in a circuit has a function, but physically, it's represented as a **box** — with defined width and height. Each component in the design is assigned proper physical dimensions and shape based on this.
+
+The **library** stores all this information for each cell, including:
+
+- Width and height of each cell
+- Required operating conditions for the cell
+- Various physical shapes for a given gate
+- Timing information
+
+A general rule: **the bigger the cell size, the lower its resistance.**
+
+In short, the library holds everything needed for a cell — its shape, size, and timing data.
+
+### 2. Placement
+
+Once the floorplan is finalized, the next step is placing the netlist cells within it. Cells are placed close to the input/output pins they're associated with, to keep connections efficient.
+
+### 3. Optimize Placement
+
+At this stage, wire length and capacitance are estimated, and **repeaters** (buffers) are inserted where needed to maintain **signal integrity**.
+
+- Buffers replicate the signal across long wires.
+- Adding more repeaters improves signal integrity but increases area utilization — so it's a trade-off.
+- Signal integrity depends directly on wire length and capacitance.
+
+**Slew** (signal transition time) also depends on capacitance:
+- Higher capacitance → more charge needed → worse (slower) slew.
+
+**Setup timing analysis** is performed at this stage to verify that the placement meets the required timing specifications.
+
+---
+
+## Need for Characterization
+
+### Standard IC Design Flow
+
+Every chip design must go through this sequence:
+
+1. **Logic Synthesis** — Converts the design's functionality into legal hardware (a gate-level netlist).
+2. **Floor Planning** — Takes the netlist from synthesis and decides the size of the core and die. This step depends entirely on the output of logic synthesis.
+3. **Placement** — Places the logic cells within the core to meet timing requirements.
+4. **CTS (Clock Tree Synthesis)** — Ensures every logic element receives the clock at exactly the same time (zero skew) — a critical step.
+5. **Routing** — Connects the placed cells, factoring in specific cell properties.
+6. **STA (Static Timing Analysis)** — The final stage of the IC design flow, verifying overall timing.
+
+---
+
+## Cell Design Flow
+
+Standard cells reside in a **library** — a repository containing cells of different functionalities, threshold voltages, dimensions, and more.
+
+The cell design flow has three parts:
+
+### 1. Inputs
+
+- **PDK** (Process Design Kit) — provided by the foundry; all designs must follow it.
+- **DRC & LVS rules**
+- **SPICE models**
+- **Library** and **user-defined specifications**
+
+### 2. Design Steps
+
+- **Circuit Design** — Implement the desired function, then model it.
+- **Layout Design**
+- **Characterization**
+
+### 3. Outputs
+
+- **CDL** (Circuit Description Language)
+- **GDSII**
+- **LEF**
+- **Extracted SPICE netlist**
+- **Timing, noise, and power data**
+- **.lib files**
+- **Function**
+
+---
+
+## Characterization Flow
+
+The characterization process follows these steps in order:
+
+1. Read the **model files** and **technology (tech) file**.
+2. Read the **extracted netlist** file from SPICE.
+3. Define/recognize the **behavior of the buffer**.
+4. Read the **sub-circuit** of the inverter.
+5. Attach the necessary **power supplies**.
+6. Apply the **stimulus** (input signal).
+7. Provide the necessary **output capacitance**.
+8. Provide the necessary **simulation commands**.
+9. Feed all these inputs as a characterization file into a configurable software tool called **GUNA**.
+
+### Output from GUNA
+
+The characterization software (GUNA) produces:
+
+- Timing data
+- Noise data
+- `.lib` files
+- Function information
