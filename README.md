@@ -554,3 +554,88 @@ Factor          (4 unit x 4 unit)
 <img width="932" height="551" alt="image" src="https://github.com/user-attachments/assets/46b58524-97e4-4c53-bc39-e31be90d9099" />
 
 ---
+# Floorplanning Concepts: Pre-placed Cells, Power Planning & Pin Placement
+
+## What Are Pre-placed Cells?
+
+A combinational logic circuit performs a specific function, but as the design grows (say, to 50 gates), it becomes large and complex.
+
+To manage this, we can split the circuit into smaller blocks — for example, two blocks of 25 gates each. Each block is then implemented independently, with its own extended I/O pins. When needed, these blocks are combined and connected together to perform the complete function.
+
+Since these blocks are built only once but reused multiple times, they're often available as ready-made IPs in the market. Common examples include:
+
+- Memory
+- Clock-gating cells
+- Comparators
+- Multiplexers (Mux)
+
+These reusable IP blocks are called **pre-placed cells**, and the process of arranging them on the chip is called **floorplanning**.
+
+### Key Idea
+
+- Pre-placed cells have **user-defined locations** and are placed on the chip *before* automated Placement-and-Routing (P&R) begins.
+- The automated P&R tool then places all the remaining logical cells around them.
+- These reusable blocks are also referred to as **macros** or **IPs**.
+
+## Defining the Location of Pre-placed Cells
+
+The placement location of these blocks is generally decided based on the **design summary** — most blocks communicate directly with input pins, so their location depends on the overall design scenario.
+
+<!-- image -->
+
+Once placed, these blocks are **fixed** — they cannot be moved further during the flow. To ensure stable operation, they are surrounded with **decoupling capacitors**.
+
+## What Is a Decoupling Capacitor and Why Is It Needed?
+
+Whenever a circuit switches from 0 to 1, it requires a sudden supply of current. 
+
+A decoupling capacitor is essentially a large capacitor charged to the same voltage as the power supply. During a switching event, the circuit draws current from this capacitor instead of the main power supply — effectively **decoupling** the circuit from fluctuations in the input voltage.
+
+- Every switching activity drains some charge from the decoupling capacitor.
+- Once discharged, the capacitor recharges itself from the main power supply.
+
+## How Does Global Communication Happen Through Power Planning?
+
+Before discussing power planning, recall the current-demand problem addressed by decoupling capacitors. Now consider a macro that repeats multiple times across the chip — each instance independently demands current.
+
+### The Voltage Drop Problem
+
+Consider a signal sent from a driver to a load over a 16-bit bus:
+
+- When the driver switches from logic 0 to logic 1, the line must retain enough power to remain stable.
+- The power supply is the only real source for this — using a decoupling capacitor alone isn't practical here.
+- If the macro is located far from the power supply, a **voltage drop** occurs along the way.
+
+### The Simultaneous Switching Problem
+
+Say this 16-bit bus feeds into an inverter. When the logic passes through:
+
+- Bits going from 1 → 0 will discharge.
+- Bits going from 0 → 1 will charge.
+
+If this switching happens simultaneously across all bits, it creates a "bump" at the **ground tap point**. If this bump exceeds the noise margin, the circuit can enter an undefined state.
+
+- **0 → 1 transition:** Demands additional current from the supply; a small voltage drop is acceptable as long as it stays within the noise margin.
+- **1 → 0 transition:** Similarly affects the ground reference point.
+
+### The Solution
+
+The root problem is that power is supplied from a single point. If power is instead supplied from **multiple points** across the chip, this issue is significantly reduced — each block can draw current from its **nearest** power source rather than a single distant one.
+
+## Pin Placement
+
+General convention:
+
+- **Input ports** → placed on the left side
+- **Output ports** → placed on the right side
+
+### Key Observations
+
+1. The exact placement of input and output ports isn't fixed — it depends on how the internal blocks are arranged within the core.
+2. **Clock ports** are made larger than other ports because the clock signal drives the entire chip. A larger port size means **lower resistance** along the path, ensuring the clock signal reaches everywhere reliably.
+
+## Logical Cell Placement Blockage
+
+To protect the pin locations, a **placement blockage** is defined — this prevents the automated Placement-and-Routing tool from placing any other cells too close to the pins.
+
+Once this blockage is set, the floorplan is considered ready for the placement and routing stage.
