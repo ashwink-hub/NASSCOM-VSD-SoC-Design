@@ -773,9 +773,22 @@ The characterization software (GUNA) produces:
 ### Task 4 : Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
 
 
+
 <img width="1920" height="983" alt="Screenshot from 2026-07-12 23-40-23" src="https://github.com/user-attachments/assets/8fdfc205-8270-46bd-bcaa-40d2269d19d0" />
 
 
 ### Task 5 : Load generated placement def in magic tool and explore the placement.
 
+<img width="1920" height="983" alt="Screenshot from 2026-07-12 23-50-59" src="https://github.com/user-attachments/assets/0d86d573-4c2e-4a80-87a8-40e207870542" />
+
+
+
+
+
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-12 23-53-54" src="https://github.com/user-attachments/assets/c75a5657-3973-43ee-a3db-ce7bb170ad60" />
+
+the above image shows the placement of the standard cells
 
