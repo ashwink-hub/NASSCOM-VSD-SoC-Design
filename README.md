@@ -748,9 +748,20 @@ The characterization software (GUNA) produces:
 
 
 # Lab Implementation 
-## Section 2 tasks : 
-1. Run "picorv32a" Design Floorplanning using OpenLane flow.
-2. Calculate the Die area in microns from the values in Floorplan def file.
-3. Load generated floorplan def in magic tool and explore the floorplan.
-4. Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
-5. Load generated placement def in magic tool and explore the placement.
+## Section 2 tasks :  
+
+### Task 1 : Run "picorv32a" Design Floorplanning using OpenLane flow.
+
+
+### Task 2 : Calculate the Die area in microns from the values in Floorplan def file.
+
+
+### Task 3 : Load generated floorplan def in magic tool and explore the floorplan.
+
+
+### Task 4 : Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
+
+
+### Task 5 : Load generated placement def in magic tool and explore the placement.
+
+
