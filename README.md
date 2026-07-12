@@ -751,15 +751,29 @@ The characterization software (GUNA) produces:
 ## Section 2 tasks :  
 
 ### Task 1 : Run "picorv32a" Design Floorplanning using OpenLane flow.
+<img width="1920" height="983" alt="Screenshot from 2026-07-12 22-40-55" src="https://github.com/user-attachments/assets/137551f2-b2d6-4149-b854-46da14cf7a61" />
 
-
+<img width="1920" height="983" alt="Screenshot from 2026-07-12 22-42-38" src="https://github.com/user-attachments/assets/6afcbafd-11ef-460e-bc3d-d007228282ca" />
 ### Task 2 : Calculate the Die area in microns from the values in Floorplan def file.
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-12 22-53-18" src="https://github.com/user-attachments/assets/09ee0751-38b0-4737-a760-1628a39c65cd" />
+
+
 
 
 ### Task 3 : Load generated floorplan def in magic tool and explore the floorplan.
 
 
+<img width="1920" height="983" alt="Screenshot from 2026-07-12 23-02-52" src="https://github.com/user-attachments/assets/59fac81f-e620-483d-9493-5d0f31f841ee" />
+<img width="1920" height="983" alt="Screenshot from 2026-07-12 23-08-06" src="https://github.com/user-attachments/assets/c440f15f-072f-456d-8b3d-e2d12480f64e" />
+<img width="1920" height="983" alt="Screenshot from 2026-07-12 23-09-55" src="https://github.com/user-attachments/assets/b0acca00-d143-4a8d-98c4-60f6d98611a9" />
+
+
+
 ### Task 4 : Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-12 23-40-23" src="https://github.com/user-attachments/assets/8fdfc205-8270-46bd-bcaa-40d2269d19d0" />
 
 
 ### Task 5 : Load generated placement def in magic tool and explore the placement.
