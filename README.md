@@ -1168,3 +1168,88 @@ Given:
 
 *(Insert the 50% input and output waveform screenshots here)*
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/931ab2f6-1acd-4c6e-85b3-638915c43a2c" />
+
+
+## Task - 5 : Lab Exercise to fix the poly.9 error in sky130.tech file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 23-24-23" src="https://github.com/user-attachments/assets/928da76a-9640-48b5-9f1a-9c69074b8207" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 23-24-58" src="https://github.com/user-attachments/assets/25c56f3a-0060-41ef-902e-e81b1139ece4" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+modifying the tech file by adding the new rule
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 23-54-00" src="https://github.com/user-attachments/assets/856bdc48-03b2-41e8-83d5-d4b601763a45" />
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 23-54-27" src="https://github.com/user-attachments/assets/63632bbd-12b8-43c7-8cf7-c3aa72bb5263" />
+
+after that again loading the sky130A.tech file in the tkcon window
+
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 23-55-27" src="https://github.com/user-attachments/assets/9160940c-f9f7-4e10-9fbb-262e3cfaaf3a" />
