@@ -1052,131 +1052,119 @@ plot y vs time a
 
 
 
-Rise transition time calculation
+## Rise Transition Time Calculation
 
-R
-i
-s
-e
- 
-t
-r
-a
-n
-s
-i
-t
-i
-o
-n
- 
-t
-i
-m
-e
-=
-T
-i
-m
-e
- 
-t
-a
-k
-e
-n
- 
-f
-o
-r
- 
-o
-u
-t
-p
-u
-t
- 
-t
-o
- 
-r
-i
-s
-e
- 
-t
-o
- 
-80
-%
-−
-T
-i
-m
-e
- 
-t
-a
-k
-e
-n
- 
-f
-o
-r
- 
-o
-u
-t
-p
-u
-t
- 
-t
-o
- 
-r
-i
-s
-e
- 
-t
-o
- 
-20
-%
-20
-%
- 
-o
-f
- 
-o
-u
-t
-p
-u
-t
-=
-660
- 
-m
-V
-80
-%
- 
-o
-f
- 
-o
-u
-t
-p
-u
-t
-=
-2.64
- 
-V
-20% Screenshots
+The rise transition time is calculated as:
+
+\[
+\text{Rise Transition Time} = \text{Time taken for output to rise to 80\%} - \text{Time taken for output to rise to 20\%}
+\]
+
+Given:
+
+- **20% of output** = **660 mV**
+- **80% of output** = **2.64 V**
+
+### 20% Screenshot
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ef56094f-f29e-447d-800f-4864792ebe4a" />
+
+### 80% Screenshots
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/34311928-0033-42a8-8e6b-e0f166bde500" />
+
+
+## Rise Transition Time Calculation
+
+The rise transition time is calculated as:
+
+\[
+\text{Rise Transition Time} = \text{Time taken for output to rise to 80\%} - \text{Time taken for output to rise to 20\%}
+\]
+
+\[
+\text{Rise Transition Time} = 2.24638 - 2.18242 = 0.06396\ \text{ns} = 63.96\ \text{ps}
+\]
+
+---
+
+## Fall Transition Time Calculation
+
+The fall transition time is calculated as:
+
+\[
+\text{Fall Transition Time} = \text{Time taken for output to fall to 20\%} - \text{Time taken for output to fall to 80\%}
+\]
+
+Given:
+
+- **20% of output** = **660 mV**
+- **80% of output** = **2.64 V**
+
+### 20% Screenshot
+
+*(Insert the 20% waveform screenshot here)*
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1fea3a1b-a375-4418-bfbf-1e14dd2e0e9c" />
+### 80% Screenshot
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ba41b7d4-dee8-4fdd-9d7c-5b9a9cf5a5b7" />
+
+## Fall Transition Time Calculation
+
+The fall transition time is calculated as:
+
+\[
+\text{Fall Transition Time} = \text{Time taken for output to fall to 20\%} - \text{Time taken for output to fall to 80\%}
+\]
+
+\[
+\text{Fall Transition Time} = 4.0955 - 4.0536 = 0.0419\ \text{ns} = 41.9\ \text{ps}
+\]
+
+---
+
+## Rise Cell Delay Calculation
+
+The rise cell delay is calculated as:
+
+\[
+\text{Rise Cell Delay} = \text{Time taken for output to rise to 50\%} - \text{Time taken for input to fall to 50\%}
+\]
+
+Given:
+
+- **50% of 3.3 V** = **1.65 V**
+
+### 50% Screenshots
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7beb7ef8-1d45-4a9a-b995-a7db0bbe572d" />
+
+
+## Rise Cell Delay Calculation
+
+The rise cell delay is calculated as:
+
+\[
+\text{Rise Cell Delay} = \text{Time taken for output to rise to 50\%} - \text{Time taken for input to fall to 50\%}
+\]
+
+\[
+\text{Rise Cell Delay} = 2.21144 - 2.15008 = 0.06136\ \text{ns} = 61.36\ \text{ps}
+\]
+
+---
+
+## Fall Cell Delay Calculation
+
+The fall cell delay is calculated as:
+
+\[
+\text{Fall Cell Delay} = \text{Time taken for output to fall to 50\%} - \text{Time taken for input to rise to 50\%}
+\]
+
+Given:
+
+- **50% of 3.3 V** = **1.65 V**
+
+### 50% Screenshots
+
+*(Insert the 50% input and output waveform screenshots here)*
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/931ab2f6-1acd-4c6e-85b3-638915c43a2c" />
