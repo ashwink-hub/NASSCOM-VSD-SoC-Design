@@ -980,5 +980,32 @@ magic -T sky130A.tech sky130_inv.mag &
 - `ls` is just a sanity check to confirm the `.mag` layout file and tech file are both present before opening Magic.
 - The final command launches Magic with the Sky130 tech file loaded, opening the custom inverter layout for inspection.
 
-[screenshot: terminal output of the commands above]
-[screenshot: sky130_inv.mag layout opened in Magic]
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 19-20-35" src="https://github.com/user-attachments/assets/bcd290e8-496a-47a2-8d42-7e7ea893e227" />
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 19-21-51" src="https://github.com/user-attachments/assets/64d0a2e9-f161-43c4-9e6e-97067db14d8d" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
