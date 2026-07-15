@@ -1028,4 +1028,25 @@ The below shows the extracted spice file
 <img width="1920" height="983" alt="Screenshot from 2026-07-15 19-52-30" src="https://github.com/user-attachments/assets/20dbf5a1-61ff-42d8-8f60-1d584a89b3dc" />
 
 
+## Task - 4 : Measuring unit distance in the layout grid
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-15 20-08-16" src="https://github.com/user-attachments/assets/3d7a795d-da27-4bd3-b4f2-c794b447468e" />
+
+
+## Task - 5 : Post layout ngspice Simulation 
+
+```bash
+#in the same directory
+ngspice sky130_inv.spice
+#now load the spice plot
+plot y vs time a
+
+```
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-15 20-33-27" src="https://github.com/user-attachments/assets/75a41a21-eebf-4f11-9f90-36312b9f0737" />
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-15 20-33-44" src="https://github.com/user-attachments/assets/757e4f21-29b9-4319-b0d6-3e6a0165f0a5" />
 
