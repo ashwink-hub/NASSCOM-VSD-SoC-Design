@@ -1019,7 +1019,13 @@ ext2spice cthresh0 rthresh0
 ext2spice
 ```
 
+<img width="1920" height="983" alt="Screenshot from 2026-07-15 19-46-07" src="https://github.com/user-attachments/assets/9f5950fe-b24f-47d0-82df-7423bc4efbc9" />
 
+
+
+The below shows the extracted spice file
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-15 19-52-30" src="https://github.com/user-attachments/assets/20dbf5a1-61ff-42d8-8f60-1d584a89b3dc" />
 
 
 
