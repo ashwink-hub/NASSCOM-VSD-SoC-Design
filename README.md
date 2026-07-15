@@ -747,8 +747,8 @@ The characterization software (GUNA) produces:
 - Function information
 
 
-# Lab Implementation 
-## Section 2 tasks :  
+# Section 2 - Lab Implementation :  
+  
 
 ### Task 1 : Run "picorv32a" Design Floorplanning using OpenLane flow.
 <img width="1920" height="983" alt="Screenshot from 2026-07-12 22-40-55" src="https://github.com/user-attachments/assets/137551f2-b2d6-4149-b854-46da14cf7a61" />
@@ -792,3 +792,193 @@ The characterization software (GUNA) produces:
 
 the above image shows the placement of the standard cells
 
+# Sky130 Day 3 - Design Library Cell using Magic Layout and ngspice Characterization
+
+## VTC – SPICE Simulations
+
+### Creating the SPICE Deck
+The first step in SPICE simulation is building the **SPICE deck** — this contains all the connectivity information: components, their connections, and the inputs to be provided.
+
+**1. Component connectivity**
+Defines how each component (transistor) is connected to every other node in the circuit.
+
+**2. Component values**
+- Ideally, the PMOS should be sized 2–3x wider than the NMOS (to balance mobility differences between electrons and holes).
+- Output capacitance needs to be defined — arrived at after careful calculation.
+- Gate voltage, drain voltage, and supply voltage also need to be defined.
+
+**3. Identify nodes**
+Nodes must be identified, since they're required to define the netlist.
+
+**4. Name nodes**
+Each identified node is given a name for reference in the netlist.
+
+### Writing the SPICE Deck
+Any line starting with `*` is treated as a comment.
+
+Example:
+```spice
+M1 out in vdd vdd pmos W=0.375u L=0.25u
+M2 out in 0   0   nmos W=0.375u L=0.25u
+```
+
+The transistor definition follows the order **D G S S**:
+- **D** – Drain
+- **G** – Gate
+- **S** – Source
+- **S** – Substrate/Body
+
+**Simulation commands:**
+```spice
+.op
+.dc Vin 0 2.5 0.05
+```
+This sweeps the input voltage from 0V to 2.5V in steps of 0.05V.
+
+The final step is to reference the model file:
+```spice
+.LIB "tsmc_025um_model.mod" CMOS_MODELS
+.end
+```
+
+### Running the SPICE Simulation
+- With NMOS and PMOS of the **same width**, the VTC (Voltage Transfer Characteristic) waveform is slightly shifted to the left.
+- Increasing the PMOS width to **2.5x** the NMOS width shifts the curve to the center of the graph — this reflects a more balanced (robust) CMOS inverter.
+- The overall shape of the waveform stays the same in both cases; only the switching point shifts.
+- **Switching threshold (Vm)** is the input voltage at which the output switches states.
+- If both NMOS and PMOS are ON simultaneously (during switching), there's a possibility of **leakage/short-circuit current**.
+- A **pulse** waveform is time-varying — e.g., a pulse defined from 0.0V to 2.5V has its own rise time and fall time parameters.
+
+---
+
+## CMOS Fabrication: The 16-Mask Process
+
+### 1. Selecting the Substrate
+- The layout eventually gets fabricated on a **substrate**.
+- Most chips use a **P-type silicon substrate**:
+  - High resistivity: 5–50 Ω·cm
+  - Doping level: ~10¹⁵ cm⁻³
+  - Orientation: (100)
+- The substrate must be **less doped than the wells**. Wells are the regions used to fabricate the NMOS and PMOS transistors.
+
+### 2. Creating Active Regions for Transistors
+- The active regions (where NMOS/PMOS sit) are sometimes called "buckets," and connections to them happen at the top.
+- These buckets must be **isolated from each other** so they don't interfere electrically.
+
+**Isolation process:**
+1. Grow a thin ~30nm silicon dioxide layer, followed by an ~80nm silicon nitride layer.
+2. Apply a photoresist layer (~1 micron) on top of the substrate.
+3. This patterned layout is called **Mask 1** in fabrication terms.
+
+- To protect a region from UV exposure (so no chemical reaction occurs underneath the mask), that area is masked before UV exposure.
+- The unexposed resist is washed away in a developing solution, then the mask is removed.
+- The nitride layer is etched away.
+- The wafer then goes into an **oxidation furnace** (very high temperature) to grow a field oxide layer.
+- This process is called **LOCOS** (Local Oxidation of Silicon), and it forms the isolation region between transistors — ensuring they don't electrically communicate with each other.
+
+### 3. N-Well and P-Well Formation
+- **N-well** → region where PMOS is built
+- **P-well** → region where NMOS is built
+- Both wells can't be formed simultaneously — one region is protected (masked) while the other is fabricated, and vice versa.
+
+**Process:**
+1. Apply mask, expose to UV light, wash out exposed resist, remove mask.
+2. **P-well**: Boron is diffused into the substrate via **ion implantation** (~200 KeV) — high energy is needed so it penetrates through the oxide layer into the substrate.
+3. **N-well**: Phosphorus is used instead of boron. The implant energy is higher than boron's because the phosphorus atom is larger.
+4. The wafer is then placed in a **drive-in furnace** for an extended period to diffuse the dopants further into the substrate.
+
+This overall approach — forming both wells this way — is known as the **twin-tub process**: PMOS is built in the N-well, NMOS is built in the P-well.
+
+### 4. Formation of the Gate
+- The gate is the most critical terminal — it controls the **threshold voltage** (turn-on voltage) of the transistor.
+- Threshold voltage depends on the **body effect coefficient (γ, gamma)**, which itself depends on doping concentration and oxide capacitance.
+- During fabrication, doping concentration, oxide capacitance, and electron charge are all tuned to achieve the desired threshold voltage.
+
+**Process:**
+1. Same steps as before: mask → photoresist → UV exposure.
+2. A boron implant is deposited on the substrate surface at a reduced energy (~60 KeV) for the NMOS gate region.
+3. Similarly processed for the PMOS gate region.
+4. The oxide damaged by ion implantation is etched away using dilute hydrofluoric acid (HF) solution, then regrown to form a high-quality ~10nm gate oxide.
+5. A **polysilicon** layer is deposited on top.
+6. Since the gate region needs low resistance, it's heavily doped — achieved through another photoresist/etch cycle — leaving the patterned **polysilicon gate**.
+
+### 5. Lightly Doped Drain (LDD) Formation
+LDD regions (P⁻ and N⁻, "lightly doped") are added to counter two effects:
+
+- **Hot electron effect**: High-energy carriers can break Si–Si bonds if they cross the ~3.2eV barrier into the conduction band, causing reliability issues.
+- **Short channel effect**: As device size shrinks, the drain voltage can penetrate into the channel region.
+
+**Process:**
+1. Mask → photoresist → UV exposure on the relevant region.
+2. Implant N-type impurity at carefully chosen (low) energy so it doesn't penetrate too deep.
+3. Repeat the equivalent process for the other MOS type.
+4. Deposit a SiO₂ layer, then use plasma anisotropic etching — this leaves oxide remaining only on the sidewalls, forming **sidewall spacers** used to define the LDD regions.
+
+### 6. Source and Drain Formation
+1. Add a thin oxide layer (screen oxide).
+2. Same mask → photoresist → UV process.
+3. Implant **arsenic** (~75 KeV) into the N-implant region (within the P-well).
+4. Implant **boron** (~50 KeV) into the P-implant region (within the N-well).
+5. **Anneal** the wafer (high-temperature drive-in) to diffuse the implanted impurities properly.
+
+### 7. Contacts and Interconnect Formation
+1. Remove the thin screen oxide using HF solution to expose the gate, source, and drain surfaces.
+2. Deposit **titanium** on the wafer surface via **sputtering** (bombarding a titanium target with argon gas to displace Ti atoms onto the wafer).
+3. Heat the wafer to ~700°C in an N₂ (nitrogen) ambient for ~60 seconds — this reacts the titanium with the underlying silicon to form **low-resistance TiSi₂** at the contacts.
+4. **TiN** (titanium nitride) is used for local interconnects between nearby contacts.
+5. TiN is patterned using the standard mask/photoresist/UV steps, then etched using **RCA cleaning** — a solution of de-ionized water, ammonium hydroxide, and hydrogen peroxide.
+
+### 8. Higher-Level Metal Formation
+Since the existing surface topography is too uneven for direct metal routing:
+
+1. Deposit a thick layer of **SiO₂ doped with phosphorus or boron** — known as **PSG (Phosphosilicate Glass)** or **BPSG (Borophosphosilicate Glass)**.
+2. **Chemical Mechanical Polishing (CMP)** is used to planarize (flatten) the wafer surface.
+3. Drill contact holes using the standard photolithography steps.
+4. Remove photoresist, then deposit a thin TiN layer.
+5. Deposit a blanket **tungsten (W)** layer to fill the contact holes.
+6. Use CMP again to remove excess tungsten.
+7. Deposit an **aluminum (Al)** layer, pattern it via photolithography, and etch it using **plasma etching**.
+8. Repeat the contact-hole patterning process for the next metal level.
+9. Deposit a thin TiN layer again, followed by tungsten (W) as contacts for the next level.
+10. Finally, deposit a top dielectric layer of **Si₃N₄ (silicon nitride)** to protect the finished chip.
+
+---
+
+## Introduction to Magic
+To learn more about the Magic layout tool, refer to the **opencircuitdesign** website. The **technology file** is the core file that tells Magic everything about the process (layers, design rules, etc.) it's working with.
+
+# Section-3 Lab Implementation 
+
+## Task - 1 : Cloning custom inverter standard cell design from github repository: 
+
+
+The custom inverter layout used for this lab is provided in a separate repository by Nickson Jose. We clone it into our OpenLANE working directory and copy over the Sky130 technology file so Magic can interpret the layout correctly.
+
+```bash
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Clone the repository with custom inverter design
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+# Change into repository directory
+cd vsdstdcelldesign
+
+# Copy magic tech file to the repo directory for easy access
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+# Check contents whether everything is present
+ls
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+```
+
+**What this does:**
+- Clones the pre-built custom inverter cell (`sky130_inv.mag`) from Nickson Jose's repo — this is the standard cell we'll be examining and characterizing through the rest of Day 3.
+- Copies the `sky130A.tech` file into the same directory so Magic has direct access to the Sky130 technology rules without needing a separate path reference.
+- `ls` is just a sanity check to confirm the `.mag` layout file and tech file are both present before opening Magic.
+- The final command launches Magic with the Sky130 tech file loaded, opening the custom inverter layout for inspection.
+
+[screenshot: terminal output of the commands above]
+[screenshot: sky130_inv.mag layout opened in Magic]
