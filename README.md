@@ -1006,9 +1006,18 @@ both the nnmos and pmos drain is connected to the ouput
 both the nmos and pmmos polysilicon gate is connected to the input
 
 
+## Task - 3 : Extraction of spice file from the magic tool
 
-
-
+```bash
+#first we have to check the directory
+pwd
+# this command is to extract in .ext format
+extract all
+# this command enables the parasitic extraction also
+ext2spice cthresh0 rthresh0
+# this command converts the ext to spice format
+ext2spice
+```
 
 
 
