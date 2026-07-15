@@ -984,21 +984,26 @@ magic -T sky130A.tech sky130_inv.mag &
 
 <img width="1920" height="1080" alt="Screenshot from 2026-07-15 19-20-35" src="https://github.com/user-attachments/assets/bcd290e8-496a-47a2-8d42-7e7ea893e227" />
 
+The above shows the screenshot of the commands used
+
+
+## Task - 2 : Load a custom inverter layout in magic and explore : 
 
 <img width="1920" height="1080" alt="Screenshot from 2026-07-15 19-21-51" src="https://github.com/user-attachments/assets/64d0a2e9-f161-43c4-9e6e-97067db14d8d" />
 
+The above image shows the custom layout of the inverter
 
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 19-26-30" src="https://github.com/user-attachments/assets/17a0a9b0-71b2-48a4-8aa0-053d7c14abd9" />
 
+Identified the polysilicon gate, and nmos
 
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 19-29-07" src="https://github.com/user-attachments/assets/dfed9227-9932-4637-8331-6bf8fbc9e8da" />
 
+both the nnmos and pmos drain is connected to the ouput
 
+<img width="1920" height="1080" alt="Screenshot from 2026-07-15 19-30-08" src="https://github.com/user-attachments/assets/1e0ac88f-7a16-48d1-90d7-21b15c172afb" />
 
-
-
-
-
-
-
+both the nmos and pmmos polysilicon gate is connected to the input
 
 
 
