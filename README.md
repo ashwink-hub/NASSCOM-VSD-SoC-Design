@@ -1315,3 +1315,15 @@ height of the standard cell = 2.73um = 0.91
 vertical pitch
 Condition 3 is verified from the above image
 
+### Task 2 : Saving the layout with the custom name and opening it 
+
+The below is the command to be executed in the tkcon window to save the modified layout
+
+```bash 
+save sky130_vsdinv.mag
+```
+The below is the command to open the newly saved layout
+
+```bash
+magic -T sky130A.tech sky130_vsdinv.mag &
+```
