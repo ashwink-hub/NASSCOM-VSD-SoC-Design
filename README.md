@@ -1408,3 +1408,125 @@ add_lefs -src $lefs
 run_synthesis
 ```
 
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-19-15" src="https://github.com/user-attachments/assets/b889af1b-8c1d-4117-a28c-708dec04dbea" />
+The below are the commands to change the parameter to improve timing and run synthesis
+```bash
+# Now once again we have to prep design so as to update variables
+prep -design picorv32a -tag 24-03_10-03 -overwrite
+
+# Addiitional commands to include newly added lef to openlane flow merged.lef
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+# Command to display current value of variable SYNTH_STRATEGY
+echo $::env(SYNTH_STRATEGY)
+
+# Command to set new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+# Command to display current value of variable SYNTH_BUFFERING to check whether it's enabled
+echo $::env(SYNTH_BUFFERING)
+
+# Command to display current value of variable SYNTH_SIZING
+echo $::env(SYNTH_SIZING)
+
+# Command to set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+# Command to display current value of variable SYNTH_DRIVING_CELL to check whether it's the proper cell or not
+echo $::env(SYNTH_DRIVING_CELL)
+
+# Now that the design is prepped and ready, we can run synthesis using following command
+run_synthesis
+
+```
+
+
+
+
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-22-13" src="https://github.com/user-attachments/assets/084d498e-de69-4036-a7a4-ec2d95962dc8" />
+
+
+
+
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-23-14" src="https://github.com/user-attachments/assets/cd87980f-cccf-4319-a112-8804f2c2623b" />
+
+
+
+Comparing to previously noted run values area has increased and worst negative slack has become 0
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-25-21" src="https://github.com/user-attachments/assets/5c710624-f22b-4336-ad1c-9fbb2c9fd754" />
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-25-54" src="https://github.com/user-attachments/assets/64840eb1-ce4d-4975-8f19-d4d89947d49f" />
+
+
+
+###  Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR flow.
+
+The following command is used to run a floor plan 
+```bash
+run_floorplan
+```
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-27-40" src="https://github.com/user-attachments/assets/841df886-71f1-4385-9c05-abaa982108f7" />
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-29-06" src="https://github.com/user-attachments/assets/14d3801a-3fb6-40ee-b6e9-15b6b650bfc7" />
+
+
+Since we are facing unexpected un-explainable error while using run_floorplan command, we can instead use the following set of commands available based on information from Desktop/work/tools/openlane_working_dir/openlane/scripts/tcl_commands/floorplan.tcl and also based on Floorplan Commands section in Desktop/work/tools/openlane_working_dir/openlane/docs/source/OpenLANE_commands.md
+
+```bash# Follwing commands are alltogather sourced in "run_floorplan" command
+init_floorplan
+place_io
+tap_decap_or
+
+```
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-33-46" src="https://github.com/user-attachments/assets/79829c6a-f9bb-4a44-9e22-1a6e350daec0" />
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-34-20" src="https://github.com/user-attachments/assets/d623e6ca-4485-4c51-845e-42f07e5ab25f" />
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-35-08" src="https://github.com/user-attachments/assets/bcdb636f-6434-46e6-9351-7c07a8c07c9b" />
+
+
+
+### Now that placement is done by the following command  
+```bash
+run_placement
+```
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-36-28" src="https://github.com/user-attachments/assets/0415d992-6745-4e84-8332-1182c7a0fd52" />
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-37-13" src="https://github.com/user-attachments/assets/d8031849-6d8f-4c14-bb74-43b4e6396e39" />
+
+
+The following are the commands to load placement def in magic in another terminal
+```bash
+# Change directory to path containing generated placement def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/24-03_10-03/results/placement/
+
+# Command to load the placement def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-42-03" src="https://github.com/user-attachments/assets/9c8220cf-7d33-4e7c-9ba9-d3764b1de923" />
+<img width="1920" height="983" alt="Screenshot from 2026-07-17 02-42-44" src="https://github.com/user-attachments/assets/c0d489a4-1c3b-474e-becc-96c650324ac3" />
+
+To view the internal connectivity of the layer, we have to use the following command
+```bash
+expand
+```
+
