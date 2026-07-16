@@ -1251,5 +1251,41 @@ modifying the tech file by adding the new rule
 after that again loading the sky130A.tech file in the tkcon window
 
 
-
 <img width="1920" height="1080" alt="Screenshot from 2026-07-15 23-55-27" src="https://github.com/user-attachments/assets/9160940c-f9f7-4e10-9fbb-262e3cfaaf3a" />
+
+
+# Sky130 Day 4 - Pre-layout timing analysis and importance of good clock tree
+
+Now we're going to extract the LEF file of this, 
+### In a PnR workflow, we must follow the below three guidelines : 
+1. The input and output ports lies in the intersection of the vertical and horizonal tracks.
+2. The width of the standard cell should be odd multiples of the track pitch.
+3. Height of the standard cell should be even multiples of the vertical track pitch.
+
+
+Commands to open the custom inverter layout
+```bash
+# Change directory to vsdstdcelldesign
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+
+```
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-16 19-34-23" src="https://github.com/user-attachments/assets/5bad3bef-6fcf-421a-9af8-341c6dbb24d3" />
+
+The below screenshot shows the tracks.info of sky130_fd_sc_hd
+<img width="1920" height="983" alt="Screenshot from 2026-07-16 19-23-50" src="https://github.com/user-attachments/assets/52801fff-1be7-433d-8ad4-9de5dd1de104" />
+
+The below is the commands for tkcon window to set grid as tracks of locali layer
+
+```bash
+# Get syntax for grid command
+help grid
+
+# Set grid values accordingly
+grid 0.46um 0.34um 0.23um 0.17um
+```
+<img width="1920" height="983" alt="Screenshot from 2026-07-16 19-37-01" src="https://github.com/user-attachments/assets/41713ba3-0ffa-4e04-a834-04b4ecabad97" />
+
