@@ -1406,25 +1406,5 @@ add_lefs -src $lefs
 
 # Now that the design is prepped and ready, we can run synthesis using following command
 run_synthesis
-
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
