@@ -1291,8 +1291,27 @@ help grid
 grid 0.46um 0.34um 0.23um 0.17um
 ```
 <img width="1920" height="983" alt="Screenshot from 2026-07-16 19-37-01" src="https://github.com/user-attachments/assets/41713ba3-0ffa-4e04-a834-04b4ecabad97" />
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-16 22-29-11" src="https://github.com/user-attachments/assets/cb8bcc78-3313-4ded-9151-a526c6e9287d" />
+
 from the above image we can see that the input and output ports are in the interconnects
 condition one is verified
 
 
-fro
+<img width="1920" height="1080" alt="Screenshot from 2026-07-16 22-37-39" src="https://github.com/user-attachments/assets/2d7d230e-a002-4318-b380-efb3205a99d4" />
+
+Width of the standard cell = 1.39um = 0.463*3
+
+Condition 2 is verified from the above image 
+
+
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-16 22-39-18" src="https://github.com/user-attachments/assets/8ca9a936-42d6-4f7e-85c1-c5dec73cb786" />
+
+height of the standard cell = 2.73um = 0.91
+
+vertical pitch
+Condition 3 is verified from the above image
+
