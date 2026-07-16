@@ -1327,3 +1327,21 @@ The below is the command to open the newly saved layout
 ```bash
 magic -T sky130A.tech sky130_vsdinv.mag &
 ```
+
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-16 23-03-34" src="https://github.com/user-attachments/assets/a580d82a-4981-42c2-87b6-1e8f60f0f5a1" />
+
+
+to extract it as a lef, the following command should be used 
+```bash
+lef write
+```
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-16 23-05-04" src="https://github.com/user-attachments/assets/24255b7c-afa4-4ada-b7fb-48f9efd8bb78" />
+
+
+The below shows the extracted LEF file from the magic
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-16 23-06-36" src="https://github.com/user-attachments/assets/f48591bb-a4b5-4b6c-abbb-20d4e8ea3b36" />
