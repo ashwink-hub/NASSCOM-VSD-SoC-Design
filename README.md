@@ -1276,6 +1276,9 @@ magic -T sky130A.tech sky130_inv.mag &
 <img width="1920" height="983" alt="Screenshot from 2026-07-16 19-34-23" src="https://github.com/user-attachments/assets/5bad3bef-6fcf-421a-9af8-341c6dbb24d3" />
 
 The below screenshot shows the tracks.info of sky130_fd_sc_hd
+These tracks are usually used in the routing stage, routes are basically metal traces
+we need to specify where we want our routes to go, that's specification is given by the tracks
+In magic if we press G, our grids get's activated
 <img width="1920" height="983" alt="Screenshot from 2026-07-16 19-23-50" src="https://github.com/user-attachments/assets/52801fff-1be7-433d-8ad4-9de5dd1de104" />
 
 The below is the commands for tkcon window to set grid as tracks of locali layer
@@ -1288,4 +1291,8 @@ help grid
 grid 0.46um 0.34um 0.23um 0.17um
 ```
 <img width="1920" height="983" alt="Screenshot from 2026-07-16 19-37-01" src="https://github.com/user-attachments/assets/41713ba3-0ffa-4e04-a834-04b4ecabad97" />
+from the above image we can see that the input and output ports are in the interconnects
+condition one is verified
 
+
+fro
