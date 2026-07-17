@@ -1515,7 +1515,6 @@ run_synthesis
 
 
 
-
 <img width="1920" height="983" alt="Screenshot from 2026-07-17 02-22-13" src="https://github.com/user-attachments/assets/084d498e-de69-4036-a7a4-ec2d95962dc8" />
 
 
