@@ -1563,6 +1563,14 @@ set ::env(SYNTH_SIZING) 1
 # Now that the design is prepped and ready, we can run synthesis using following command
 run_synthesis
 ```
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-17 14-02-43" src="https://github.com/user-attachments/assets/b349f170-684b-4064-baef-792eaa2c648b" />
+
+
+
+<img width="1920" height="1080" alt="Screenshot from 2026-07-17 14-04-24" src="https://github.com/user-attachments/assets/ab1523d1-05a5-42ee-b1f0-3d343c5db33a" />
+
+
 The below is the newly created pre_sta.config for Static Timing Analysis in the OpenLane directory
 ```bah 
 set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um
