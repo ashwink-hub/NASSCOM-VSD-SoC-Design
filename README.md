@@ -1762,3 +1762,47 @@ run_cts
 # Now that CTS is done we can do power distribution network
 gen_pdn 
 ```
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 01-09-12" src="https://github.com/user-attachments/assets/3b27046c-26df-40f2-ba28-5e7197c29b89" />
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 01-10-00" src="https://github.com/user-attachments/assets/9a850c91-6347-4c9e-acba-ef15b2e7610b" />
+
+
+To view the PDN def file in magic 
+The following commands are used 
+``` bash
+# Change directory to path containing generated PDN def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-07_18-04/tmp/floorplan/
+
+# Command to load the PDN def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 33-pdn.def &
+```
+/openLANE_flow/designs/picorv32a/runs/17-07_18-04/tmp/floorplan/33-pdn.def
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 01-14-29" src="https://github.com/user-attachments/assets/a4a19662-d890-4a24-94ea-739948800275" />
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 01-19-54" src="https://github.com/user-attachments/assets/0d768560-f4ba-4a5d-a2ba-a82f47c4acdb" />
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 01-21-18" src="https://github.com/user-attachments/assets/e3ad1cb9-23dc-4c4d-bb9f-058aaea1e11c" />
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 01-21-46" src="https://github.com/user-attachments/assets/8e0d4ca4-af4f-4d89-9737-252a3464cead" />
+
+
+### The next step is we're going to do an detailed routing using TritonRoute 
+
+the following commands should be run in order to do an detailed routing
+
+``` bash
+# Check value of 'CURRENT_DEF'
+echo $::env(CURRENT_DEF)
+
+# Check value of 'ROUTING_STRATEGY'
+echo $::env(ROUTING_STRATEGY)
+
+# Command for detailed route using TritonRoute
+run_routing
+
+```
+
