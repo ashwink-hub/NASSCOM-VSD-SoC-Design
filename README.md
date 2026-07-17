@@ -47,6 +47,74 @@ A C program has to eventually run on real hardware — the chip inside your lapt
 2. **Assemble to Machine Code** — The assembly program is converted into machine language — plain binary (0s and 1s) that the hardware can understand.
 3. **Implement in RTL** — The RISC-V specification is implemented using RTL (a Hardware Description Language).
 4. **RTL to Layout** — The RTL is taken through the standard **RTL to GDSII** flow (PnR) to produce the final chip layout.
+   
+## SKY_L3 - From Software Application to Hardware
+
+### Overview
+
+<img width="896" height="508" alt="Software to hardware overview" src="https://github.com/user-attachments/assets/10816884-e165-4997-ba88-f99d50dbec3a" />
+
+Every application (app) we run needs to eventually communicate with the underlying hardware. This translation happens through a stack of **system software**, which sits between the application and the hardware.
+
+### System Software
+
+The application software does not talk to the hardware directly — it first passes through the **system software**. The major components of system software are:
+
+1. **Operating System (OS)**
+2. **Compiler**
+3. **Assembler**
+
+### The Translation Flow
+
+<img width="917" height="527" alt="Compiler and assembler flow" src="https://github.com/user-attachments/assets/cfd901b3-df12-4d21-8912-6746c1cdb9f6" />
+
+1. **Application → OS**
+   The application (app) is handed to the Operating System. The OS manages this application and passes it along in a high-level language such as **C, C++, or Java**.
+
+2. **OS output → Compiler**
+   The high-level language program (C/C++/Java) generated/managed by the OS is fed into the **compiler**.
+   The compiler converts this high-level program into a set of **instructions**.
+
+3. **Compiler → Instructions (hardware-dependent)**
+   The output of the compiler — the instruction set — is **not universal**. Its syntax and format depend on the **type/architecture of the hardware** being targeted (i.e., the Instruction Set Architecture, or ISA). This is why the same C program can be compiled differently for different chips.
+
+4. **Instructions → Assembler**
+   These hardware-specific instructions are handed to the **assembler**, whose job is to convert them into **machine language**, i.e., binary (0s and 1s).
+
+5. **Assembler → Hardware**
+   The binary output from the assembler is fed to the **hardware**. The hardware executes/functions based on this binary input.
+
+## Overall Architecture
+
+<img width="891" height="522" alt="Architecture diagram 1" src="https://github.com/user-attachments/assets/cd00d245-d7fe-49d2-820a-8843c6677810" />
+
+<img width="911" height="521" alt="Architecture diagram 2" src="https://github.com/user-attachments/assets/af0b5af2-3f26-449e-a9bc-89e9fea753e3" />
+
+<img width="897" height="518" alt="Architecture diagram 3" src="https://github.com/user-attachments/assets/fb175bc9-6cd2-4679-aad9-42227007cb3a" />
+
+#### Summary Flow
+
+```
+Application (App)
+        │
+        ▼
+  Operating System (OS)
+        │  (outputs high-level language: C / C++ / Java)
+        ▼
+     Compiler
+        │  (outputs instructions — syntax depends on target hardware/ISA)
+        ▼
+     Assembler
+        │  (converts instructions to machine language: 0s and 1s)
+        ▼
+      Hardware
+        │  (executes based on binary input)
+        ▼
+      Output
+```
+
+
+
 
 ## SKY130_D1_SK2 - SoC design and OpenLANE
 
