@@ -1627,3 +1627,87 @@ set_load  $cap_load [all_outputs]
 
 
 ```
+
+
+
+# SKY130_D5_SK1 - Routing and design rule check (DRC)
+
+### Introduction to maze routing algorithm
+
+
+#### Design Rule Check (DRC)
+
+##### Overview
+Design Rule Checks (DRC) are a set of geometric constraints that must be followed 
+while designing a chip. These rules are essential for any routing technique, as 
+they ensure the design can be manufactured reliably.
+
+There are typically **thousands of DRC rules** that must be satisfied during 
+the routing process.
+
+##### Origin of DRC Rules
+DRC rules are primarily derived from **lithography** constraints — i.e., the 
+physical limitations of the manufacturing process used to print the design 
+onto silicon.
+
+##### Typical Design Rules for a Pair of Wires
+
+For any two adjacent wires, three fundamental rules must be checked:
+
+1. **Wire Width** — the minimum allowed width of a single wire.
+2. **Wire Spacing** — the minimum allowed gap between two adjacent wires.
+3. **Wire Pitch** — the center-to-center distance between two adjacent wires 
+   (Pitch = Width + Spacing).
+
+###### Solving the Signal Short Problem
+When two wires are routed too close together (violating spacing rules) and 
+risk a signal short, one common fix is:
+
+- Move one of the wires to a **different routing layer**.
+
+This resolves the short by eliminating the physical proximity conflict on the 
+same layer.
+
+### Routing – Global vs Detailed
+
+Routing basically happens in two stages, first a rough pass and then a precise pass.
+
+#### 1. Global Routing (FastRoute)
+
+This is the "big picture" step. The tool splits the chip into a grid of regions (called GCells) and figures out roughly which path each net should take to get from point A to point B.
+
+At this stage it's not drawing exact wires yet, it's more like a **map with suggested routes**, taking into account:
+- which metal layer to use
+- how congested different areas are (avoiding traffic jams basically)
+
+Output = **routing guides**, i.e. "go through this region" instructions, not the final wires.
+
+#### 2. Detailed Routing (TritonRoute)
+
+Now comes the precise part. TritonRoute takes those global routing guides and actually lays down:
+- exact wire segments
+- vias (connections between layers)
+- specific metal tracks
+
+And everything here has to strictly obey **DRC (Design Rule Check)** rules — no shortcuts allowed.
+
+**Simple way to remember it:**
+> Global routing decides *which neighborhood* the wire passes through, detailed routing decides *the exact street and house number*.
+
+---
+
+### SPEF & Post-Route STA
+
+Once routing is actually done, we need to check if the design still meets timing — but this time using *real* wire data instead of estimates.
+
+#### Parasitic Extraction
+After detailed routing, the tool extracts the real resistance (R) and capacitance (C) of the actual wires. This is saved into a file called **SPEF** (Standard Parasitic Exchange Format).
+
+#### Back-Annotation
+This SPEF data is then fed back (back-annotated) into the netlist, so now the netlist knows the *real* wire delays instead of guessed ones.
+
+#### Post-Route STA
+Finally, STA is run again — but now with real parasitics included. This is the **final, sign-off timing analysis**, i.e. the actual truth of whether the chip will work at the target speed.
+
+---
+
