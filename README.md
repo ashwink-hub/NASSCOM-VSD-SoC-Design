@@ -1479,7 +1479,7 @@ run_synthesis
 
 <img width="1920" height="983" alt="Screenshot from 2026-07-17 02-19-15" src="https://github.com/user-attachments/assets/b889af1b-8c1d-4117-a28c-708dec04dbea" />
 The below are the commands to change the parameter to improve timing and run synthesis
-```bash
+``` bash
 # Now once again we have to prep design so as to update variables
 prep -design picorv32a -tag 24-03_10-03 -overwrite
 
@@ -1507,9 +1507,7 @@ echo $::env(SYNTH_DRIVING_CELL)
 
 # Now that the design is prepped and ready, we can run synthesis using following command
 run_synthesis
-
 ```
-
 
 
 
