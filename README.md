@@ -1478,7 +1478,10 @@ run_synthesis
 
 
 <img width="1920" height="983" alt="Screenshot from 2026-07-17 02-19-15" src="https://github.com/user-attachments/assets/b889af1b-8c1d-4117-a28c-708dec04dbea" />
+
 The below are the commands to change the parameter to improve timing and run synthesis
+
+
 ``` bash
 # Now once again we have to prep design so as to update variables
 prep -design picorv32a -tag 24-03_10-03 -overwrite
@@ -1507,22 +1510,12 @@ echo $::env(SYNTH_DRIVING_CELL)
 
 # Now that the design is prepped and ready, we can run synthesis using following command
 run_synthesis
+
 ```
-
-
-
-
 
 <img width="1920" height="983" alt="Screenshot from 2026-07-17 02-22-13" src="https://github.com/user-attachments/assets/084d498e-de69-4036-a7a4-ec2d95962dc8" />
 
-
-
-
-
-
-
 <img width="1920" height="983" alt="Screenshot from 2026-07-17 02-23-14" src="https://github.com/user-attachments/assets/cd87980f-cccf-4319-a112-8804f2c2623b" />
-
 
 
 Comparing to previously noted run values area has increased and worst negative slack has become 0
