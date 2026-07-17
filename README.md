@@ -1902,3 +1902,38 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pins} -forma
 # Exit to OpenLANE flow
 exit
 ```
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-56-29" src="https://github.com/user-attachments/assets/f7f0b43c-bfa5-42c3-9ea2-33513bb7dbb9" />
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-57-15" src="https://github.com/user-attachments/assets/2e606b97-986c-498c-b390-83dcd0c7dae7" />
+
+
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-57-32" src="https://github.com/user-attachments/assets/32eaf495-748e-4229-8b47-1ca66cc85a6d" />
+
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-57-44" src="https://github.com/user-attachments/assets/9cbd71cb-45e3-41eb-bfa2-b90356c0c5d5" />
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-58-04" src="https://github.com/user-attachments/assets/97934a20-e515-413d-ab51-b12c16ae7d37" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
