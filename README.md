@@ -1805,4 +1805,5 @@ echo $::env(ROUTING_STRATEGY)
 run_routing
 
 ```
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 01-43-01" src="https://github.com/user-attachments/assets/acc7132a-894a-47ff-a8f0-722d83691e9b" />
 
