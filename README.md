@@ -1906,4 +1906,14 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pins} -forma
 exit
 ```
 
-
+vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane$ cd
+vsduser@vsdsquadron:~$ clear
+vsduser@vsdsquadron:~$ cd Desktop/work/tools/SPEF_EXTRACTOR
+bash: cd: Desktop/work/tools/SPEF_EXTRACTOR: No such file or directory
+vsduser@vsdsquadron:~$ cd Desktop/work/tools/
+vsduser@vsdsquadron:~/Desktop/work/tools$ ls
+openlane_working_dir  vsdflow
+vsduser@vsdsquadron:~/Desktop/work/tools$ python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-07_18-04/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.def
+python3: can't open file 'main.py': [Errno 2] No such file or directory
+vsduser@vsdsquadron:~/Desktop/work/tools$ 
+vsduser@vsdsquadron:~/Desktop/work/tools$ 
