@@ -1807,3 +1807,12 @@ run_routing
 ```
 <img width="1920" height="983" alt="Screenshot from 2026-07-18 01-43-01" src="https://github.com/user-attachments/assets/acc7132a-894a-47ff-a8f0-722d83691e9b" />
 
+#### The following are the commands to load the routed def file in magic
+
+``` bash
+# Change directory to path containing routed def
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-07_18-04/results/routing/
+
+# Command to load the routed def in magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+```
