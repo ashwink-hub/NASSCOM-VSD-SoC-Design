@@ -1816,3 +1816,39 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-07
 # Command to load the routed def in magic tool
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
 ```
+
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-06-43" src="https://github.com/user-attachments/assets/8ab1db6d-0dfb-4f55-9028-290843e0bb31" />
+
+
+
+
+
+
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-08-04" src="https://github.com/user-attachments/assets/6d2427d3-0b16-4632-9f1e-06ca726c8480" />
+
+
+
+
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-08-31" src="https://github.com/user-attachments/assets/5ff3f510-517c-4678-9139-9b308bcbbc94" />
+
+
+
+
+
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-10-29" src="https://github.com/user-attachments/assets/d0f50687-60c1-4dd7-9652-de8f0771343c" />
+
+<img width="1920" height="983" alt="Screenshot from 2026-07-18 02-11-42" src="https://github.com/user-attachments/assets/ab4aaa70-197a-4ed5-a7f2-12d50342daf6" />
+
+The fast route guide present in the above directory
+
+
